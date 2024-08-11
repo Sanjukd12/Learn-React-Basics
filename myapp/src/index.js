@@ -1,53 +1,76 @@
 import React from "react";
-import ReactDom from "react-dom/client";
+import ReactDOM from "react-dom/client";
 import "./index.css";
-
-const author = "Colleen Hoover";
-const title = "It ends with us";
-const img = "https://m.media-amazon.com/images/I/51X4eBEqyqL._SY445_SX342_.jpg";
 
 const BookList = () => {
   return (
     <section className="booklist">
-      <Book
-        author={firstBook.author}
-        img={firstBook.img}
-        title={firstBook.title}
-      >
-        <p> loren islem</p>
-      </Book>
-      <Book
-        author={secondBook.author}
-        img={secondBook.img}
-        title={secondBook.title}
-      />
+      <EventExample />
+      {books.map((book) => {
+        const { title, author, id } = book;
+        return <Book key={id} book={book} />;
+      })}
     </section>
   );
 };
 
-const firstBook = {
-  author: "Alpha",
-  title: "beta",
+const EventExample = () => {
+  const handleFormInput = (e) => {
+    console.log(e);
+    console.log("handle form input");
+  };
+  const handleButtonClick = () => {
+    alert("handle button click");
+  };
+  return (
+    <section>
+      <form>
+        <h2>Typical Form</h2>
+        <input
+          type="text"
+          name="example"
+          onChange={handleFormInput}
+          style={{ margin: "1rem 0" }}
+        />
+      </form>
+      <button onClick={handleButtonClick}>Click Me</button>
+    </section>
+  );
 };
 
-const secondBook = {
-  author: "Delta",
-  title: "gama",
-};
+const books = [
+  {
+    img: "https://via.placeholder.com/150", // Placeholder image URL
+    author: "Delta",
+    title: "Gama",
+    id: 2,
+  },
+  {
+    img: "https://via.placeholder.com/150", // Placeholder image URL
+    author: "Alpha",
+    title: "Beta",
+    id: 1,
+  },
+  {
+    img: "https://via.placeholder.com/150", // Placeholder image URL
+    author: "Pie",
+    title: "Delta",
+    id: 3,
+  },
+];
 
 const Book = (props) => {
-    const { img, title, author, children } = props;
-    console.log(props);
+  const { img, title, author } = props.book;
+  console.log(props);
   return (
     <article className="book">
-      <img src={img}></img>
+      <img src={img} alt={title} />
       <h2>{title}</h2>
-      <h4> {author}</h4>
-      {children}
+      <h4>{author}</h4>
     </article>
   );
 };
 
-const root = ReactDom.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<BookList />);
