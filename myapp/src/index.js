@@ -9,21 +9,41 @@ const img = "https://m.media-amazon.com/images/I/51X4eBEqyqL._SY445_SX342_.jpg";
 const BookList = () => {
   return (
     <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
+      <Book
+        author={firstBook.author}
+        img={firstBook.img}
+        title={firstBook.title}
+      >
+        <p> loren islem</p>
+      </Book>
+      <Book
+        author={secondBook.author}
+        img={secondBook.img}
+        title={secondBook.title}
+      />
     </section>
   );
 };
 
+const firstBook = {
+  author: "Alpha",
+  title: "beta",
+};
+
+const secondBook = {
+  author: "Delta",
+  title: "gama",
+};
+
 const Book = (props) => {
-  console.log(props);
+    const { img, title, author, children } = props;
+    console.log(props);
   return (
     <article className="book">
       <img src={img}></img>
       <h2>{title}</h2>
       <h4> {author}</h4>
-      {console.log(props)}
+      {children}
     </article>
   );
 };
