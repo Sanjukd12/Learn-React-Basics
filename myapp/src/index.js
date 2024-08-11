@@ -30,7 +30,7 @@ const Image = () => (
 );
 const Title = () => <h2>It Ends with Us</h2>;
 const Author = () => {
-  return <h4>Colleen Hoover</h4>;
+  return <h4 style={{color: 'red', fontSize:'0.75rem', marginTop:'0.5rem'}}>Colleen Hoover</h4>;
 };
 const root = ReactDom.createRoot(document.getElementById("root"));
 
