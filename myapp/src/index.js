@@ -17,14 +17,21 @@ const BookList = () => {
 const EventExample = () => {
   const handleFormInput = (e) => {
     console.log(e);
+    console.log(e.target);
+    console.log(e.target.name);
+    console.log(e.target.value);
     console.log("handle form input");
   };
   const handleButtonClick = () => {
     alert("handle button click");
   };
+  const handleSubmissionForm = (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+  };
   return (
     <section>
-      <form>
+      <form onSubmit={handleSubmissionForm}>
         <h2>Typical Form</h2>
         <input
           type="text"
