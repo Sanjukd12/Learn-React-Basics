@@ -2,6 +2,10 @@ import React from "react";
 import ReactDom from "react-dom/client";
 import "./index.css";
 
+const author = "Colleen Hoover";
+const title = "It ends with us";
+const img = "https://m.media-amazon.com/images/I/51X4eBEqyqL._SY445_SX342_.jpg";
+
 const BookList = () => {
   return (
     <section className="booklist">
@@ -12,26 +16,18 @@ const BookList = () => {
   );
 };
 
-const Book = () => {
+const Book = (props) => {
+  console.log(props);
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img src={img}></img>
+      <h2>{title}</h2>
+      <h4> {author}</h4>
+      {console.log(props)}
     </article>
   );
 };
 
-const Image = () => (
-  <img
-    src="https://m.media-amazon.com/images/I/51X4eBEqyqL._SY445_SX342_.jpg"
-    alt="It Ends with us"
-  />
-);
-const Title = () => <h2>It Ends with Us</h2>;
-const Author = () => {
-  return <h4 style={{color: 'red', fontSize:'0.75rem', marginTop:'0.5rem'}}>Colleen Hoover</h4>;
-};
 const root = ReactDom.createRoot(document.getElementById("root"));
 
 root.render(<BookList />);
